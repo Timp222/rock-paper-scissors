@@ -9,11 +9,11 @@
 <body>
     <script>
         function computerPlay() {
-            let computerChoice = Math.floor(Math.random()*3) + 1;
-            if (computerChoice === 1) {
+            let computerChoice = Math.floor(Math.random() * 3) + 1;
+            if (computerChoice == 1) {
                 computerChoice = 'Rock'
             
-            } else if (computerChoice === 2) {
+            } else if (computerChoice == 2) {
                 computerChoice = 'Paper'
                 
             } else {
@@ -23,7 +23,42 @@
             return computerChoice;
         }
 
-        console.log(computerPlay())
+        function playerSelection() {
+            let playerChoice = prompt('Rock, Paper or Scissors?')
+            if (playerChoice.toLowerCase() == 'rock' && computerPlay() == 'Scissors') {
+                alert('Computer picked SCISSORS. You WIN!')
+
+            } else if (playerChoice.toLowerCase() == 'rock' && computerPlay() == 'Rock') {
+                alert('Computer picked ROCK. DRAW!')
+
+            } else if (playerChoice.toLowerCase() == 'rock' && computerPlay() == 'Paper') {
+                alert('Computer picked PAPER. You LOSE!')
+
+            } else if (playerChoice.toLowerCase() == 'paper' && computerPlay() == 'Paper') {
+                alert('Computer picked PAPER. DRAW!')
+
+            } else if (playerChoice.toLowerCase() == 'paper' && computerPlay() == 'Scissors') {
+                alert('Computer picked SCISSORS. You LOSE!')
+
+            } else if (playerChoice.toLowerCase() == 'paper' && computerPlay() == 'Rock') {
+                alert('Computer picked ROCK. You WIN!')
+
+            } else if (playerChoice.toLowerCase() == 'scissors' && computerPlay() == 'Paper') {
+                alert('Computer picked PAPER. You WIN!')
+
+            } else if (playerChoice.toLowerCase() == 'scissors' && computerPlay() == 'Scissors') {
+                alert('Computer picked SCISSORS. DRAW!')
+
+            } else if (playerChoice.toLowerCase() == 'scissors' && computerPlay() == 'Rock') {
+                alert('Computer picked ROCK. You LOSE!')
+
+            } else {
+                alert('Invalid choice. Please pick Rock, Paper or Scissors!')
+            }
+
+        }
+
+        console.log(playerSelection())
 
     </script>   
 </body>
