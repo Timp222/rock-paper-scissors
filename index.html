@@ -8,57 +8,62 @@
 </head>
 <body>
     <script>
+
+        function playRound(playerSelection, computerSelection){
+
         function computerPlay() {
             let computerChoice = Math.floor(Math.random() * 3) + 1;
             if (computerChoice == 1) {
                 computerChoice = 'Rock'
-            
             } else if (computerChoice == 2) {
-                computerChoice = 'Paper'
-                
+                computerChoice = 'Paper'  
             } else {
                 computerChoice = 'Scissors'
             }
-
             return computerChoice;
         }
 
         function playerSelection() {
-            let playerChoice = prompt('Rock, Paper or Scissors?')
-            if (playerChoice.toLowerCase() == 'rock' && computerPlay() == 'Scissors') {
-                alert('Computer picked SCISSORS. You WIN!')
+            let playerChoice = prompt('Rock, Paper or Scissors?');
 
-            } else if (playerChoice.toLowerCase() == 'rock' && computerPlay() == 'Rock') {
-                alert('Computer picked ROCK. DRAW!')
+            if (playerChoice.toLowerCase() == 'rock' && computerSelection == 'Scissors') {
+                return 'Computer picked SCISSORS. You WIN!'
 
-            } else if (playerChoice.toLowerCase() == 'rock' && computerPlay() == 'Paper') {
-                alert('Computer picked PAPER. You LOSE!')
+            } else if (playerChoice.toLowerCase() == 'rock' && computerSelection == 'Rock') {
+                return 'Computer picked ROCK. DRAW!'
 
-            } else if (playerChoice.toLowerCase() == 'paper' && computerPlay() == 'Paper') {
-                alert('Computer picked PAPER. DRAW!')
+            } else if (playerChoice.toLowerCase() == 'rock' && computerSelection == 'Paper') {
+                return 'Computer picked PAPER. You LOSE!'
 
-            } else if (playerChoice.toLowerCase() == 'paper' && computerPlay() == 'Scissors') {
-                alert('Computer picked SCISSORS. You LOSE!')
+            } else if (playerChoice.toLowerCase() == 'paper' && computerSelection == 'Paper') {
+                return 'Computer picked PAPER. DRAW!'
 
-            } else if (playerChoice.toLowerCase() == 'paper' && computerPlay() == 'Rock') {
-                alert('Computer picked ROCK. You WIN!')
+            } else if (playerChoice.toLowerCase() == 'paper' && computerSelection == 'Scissors') {
+                return 'Computer picked SCISSORS. You LOSE!'
 
-            } else if (playerChoice.toLowerCase() == 'scissors' && computerPlay() == 'Paper') {
-                alert('Computer picked PAPER. You WIN!')
+            } else if (playerChoice.toLowerCase() == 'paper' && computerSelection == 'Rock') {
+                return 'Computer picked ROCK. You WIN!'
 
-            } else if (playerChoice.toLowerCase() == 'scissors' && computerPlay() == 'Scissors') {
-                alert('Computer picked SCISSORS. DRAW!')
+            } else if (playerChoice.toLowerCase() == 'scissors' && computerSelection == 'Paper') {
+                return 'Computer picked PAPER. You WIN!'
 
-            } else if (playerChoice.toLowerCase() == 'scissors' && computerPlay() == 'Rock') {
-                alert('Computer picked ROCK. You LOSE!')
+            } else if (playerChoice.toLowerCase() == 'scissors' && computerSelection == 'Scissors') {
+                return 'Computer picked SCISSORS. DRAW!'
+
+            } else if (playerChoice.toLowerCase() == 'scissors' && computerSelection == 'Rock') {
+                return 'Computer picked ROCK. You LOSE!'
 
             } else {
-                alert('Invalid choice. Please pick Rock, Paper or Scissors!')
+                return 'Invalid choice. Please pick Rock, Paper or Scissors!'
             }
-
         }
 
-        console.log(playerSelection())
+        const computerSelection = computerPlay();
+        const playerSelection = playerSelection();
+    }
+    
+        console.log(playRound(playerSelection, computerSelection))
+
 
     </script>   
 </body>
