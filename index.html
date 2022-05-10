@@ -24,15 +24,9 @@
 
         // Player's choice
         function playerPlay() {
-            let playerChoice = prompt('Rock, Paper or Scissors?');
+            let playerChoice = prompt('Rock, Paper or Scissors?').toLowerCase();
             return playerChoice;
         }
-
-        // Assigning a variable to computerPlay() function
-        const computerSelection = computerPlay();
-
-        // Assigning a variable to playerPlay() function
-        const playerSelection = playerPlay().toLowerCase();
     
         // Singular round of RPS 
         function playRound(playerSelection, computerSelection){
@@ -88,7 +82,7 @@
             let gamesPlayed = 0;
             let gameWinner = '';
 
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 5; i++) {
                 let overallWinner = playRound(playerPlay(), computerPlay());
 
                 if (overallWinner === 'player') {
