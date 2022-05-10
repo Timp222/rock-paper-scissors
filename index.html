@@ -36,74 +36,93 @@
     
         // Singular round of RPS 
         function playRound(playerSelection, computerSelection){
+
+            let roundMessage = '';
+            let roundWinner = '';
+
             if (playerSelection == 'rock' && computerSelection == 'Scissors') {
-                playerScore++;
-                return 'Computer picked SCISSORS. You WIN!'
+                roundWinner = 'player';
+                roundMessage = 'Computer picked SCISSORS. You WIN!'
 
             } else if (playerSelection == 'rock' && computerSelection == 'Rock') {
-                return 'Computer picked ROCK. DRAW!'
+                roundMessage = 'Computer picked ROCK. DRAW!'
 
             } else if (playerSelection == 'rock' && computerSelection == 'Paper') {
-                computerScore++;
-                return 'Computer picked PAPER. You LOSE!'
+                roundWinner = 'computer';
+                roundMessage = 'Computer picked PAPER. You LOSE!'
 
             } else if (playerSelection == 'paper' && computerSelection == 'Paper') {
-                return 'Computer picked PAPER. DRAW!'
+                roundMessage = 'Computer picked PAPER. DRAW!'
                 
             } else if (playerSelection == 'paper' && computerSelection == 'Scissors') {
-                computerScore++;
-                return 'Computer picked SCISSORS. You LOSE!'
+                roundWinner = 'computer';
+                roundMessage = 'Computer picked SCISSORS. You LOSE!'
 
             } else if (playerSelection == 'paper' && computerSelection == 'Rock') {
-                playerScore++;
-                return 'Computer picked ROCK. You WIN!'
+                roundMessage = 'player';
+                roundMessage = 'Computer picked ROCK. You WIN!'
 
             } else if (playerSelection == 'scissors' && computerSelection == 'Paper') {
-                playerScore++;
-                return 'Computer picked PAPER. You WIN!'
+                roundWinner = 'player';
+                roundMessage = 'Computer picked PAPER. You WIN!'
 
             } else if (playerSelection == 'scissors' && computerSelection == 'Scissors') {
-                return 'Computer picked SCISSORS. DRAW!'
+                roundMessage = 'Computer picked SCISSORS. DRAW!'
 
             } else if (playerSelection == 'scissors' && computerSelection == 'Rock') {
-                computerScore++;
-                return 'Computer picked ROCK. You LOSE!'
+                roundWinner = 'computer';
+                roundMessage = 'Computer picked ROCK. You LOSE!'
                 
             } else {
-                return 'Invalid choice. Please pick Rock, Paper or Scissors!'
+                roundMessage = 'Invalid choice. Please pick Rock, Paper or Scissors!'
             }
-        }
 
-        let playerScore = 0;
-        let computerScore = 0;
-        let gamesPlayed = 0;
-
-        function gameScore(playerScore, computerScore){
-            if (playerScore == 5 || computerScore == 5){
-                if (playerScore > computerScore) {
-                    gamesPlayed++;
-                    return "You WIN!"
-                }
-                else if (computerScore > playerScore) {
-                    gamesPlayed++;
-                    return "You LOSE!"
-                }
-                else {
-                    gamesPlayed++;
-                    return "It was a DRAW!"
-                }
-            }
+            console.log(roundMessage)
+            return roundWinner
         }
 
         function game(){
-            for (let i = 0; i <= 5; i++) {
-                computerPlay();
-                playerPlay();
-                console.log(playRound(playerSelection, computerSelection));
-            }
-        }
 
-        console.log(game())
+            let playerScore = 0;
+            let computerScore = 0;
+            let gamesPlayed = 0;
+            let gameWinner = '';
+
+            for (let i = 1; i <= 4; i++) {
+                let overallWinner = playRound(playerPlay(), computerPlay());
+
+                if (overallWinner === 'player') {
+                    playerScore++;
+                } else if (overallWinner === 'computer') {
+                    computerScore++;
+                }
+            }
+
+                if (playerScore > computerScore) {
+                    gamesPlayed++;
+                    gameWinner = 'Player';
+                }
+                else if (computerScore > playerScore) {
+                    gamesPlayed++;
+                    gameWinner = 'Computer';
+                }
+                else {
+                    gamesPlayed++;
+                    gameWinner = 'Draw';
+                }
+
+            console.log(`Player: ${playerScore} | Computer: ${computerScore}`);
+
+            if (gameWinner === 'Draw') {
+                console.log("There was no match winner. Draw!")
+            } else {
+                console.log(`Match winner: ${gameWinner}`)
+            }
+            }
+
+        
+
+        game()
     </script>   
 </body>
 </html>
